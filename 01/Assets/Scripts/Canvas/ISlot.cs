@@ -24,16 +24,12 @@ public class ISlot : MonoBehaviour, IPointerDownHandler {
     }
 
     public void OnPointerDown(PointerEventData eventData) {
-
         // Se tiver um item sendo arrastado
         if(dragging.transform.childCount == 1) {
-
             // Se eu clicar com o botão esquerdo sobre um slot
             if(eventData.button == PointerEventData.InputButton.Left) {
-
                 // Se o slot estiver vazio, coloque o item sendo arrastado no slot
                 if(transform.childCount == 0) {
-
                     // Procure nos objetos filho do GameObject "Dragging Item" o component (script) "IItem"
                     item = dragging.GetComponentInChildren<IItem>();
 
@@ -47,14 +43,11 @@ public class ISlot : MonoBehaviour, IPointerDownHandler {
                     item.transform.SetParent(item.getParentAfterDrag);
                 }
             }
-
             // Se eu clicar com o botão direito sobre um slot
-            if(eventData.button == PointerEventData.InputButton.Right) {            
-                
+            if(eventData.button == PointerEventData.InputButton.Right) {
                 // ???
                 // Se tiver 2 itens ou mais sendo arrastados
                 if(item.getStack < 2) {
-
                     // Reative o Raycast do item para que possamos clicar nele novamente
                     item.getImage.raycastTarget = true;
 
@@ -64,10 +57,8 @@ public class ISlot : MonoBehaviour, IPointerDownHandler {
                     // Mova o item para o slot de origem
                     item.transform.SetParent(item.getParentAfterDrag);
                 }
-
                 // Se não, se só tiver 2 ou mais itens sendo arrastados
                 else {
-
                     // Crie um item para representar metade da pilha
                     GameObject itemObject = Instantiate(itemPrefab);
 
@@ -83,11 +74,9 @@ public class ISlot : MonoBehaviour, IPointerDownHandler {
                     // Salve um novo slot de origem para a metade que foi criada
                     item2.transform.SetParent(transform);
 
-                    // Mova o item da metade que foi criada para o slot de origem
-                    RectTransform rectTransform = item2.GetComponent<RectTransform>();
-
                     // Não to lembrada pra que serve, mas acho que era algum bug que quando você colocava o item no slot, o item diminuia de tamanho
-                    //rectTransform.localScale = transform.localScale;
+                    RectTransform rectTransform = item2.GetComponent<RectTransform>();
+                    rectTransform.localScale = transform.localScale;
 
                     // Subtraia um item da pilha de itens que esta sendo arratado
                     item.getStack--;

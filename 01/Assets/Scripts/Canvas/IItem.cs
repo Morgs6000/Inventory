@@ -118,14 +118,11 @@ public class IItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, I
         }
     }
 
-    public void OnPointerDown(PointerEventData eventData) {
-        
+    public void OnPointerDown(PointerEventData eventData) {        
         // Se não tiver nenhum item sendo arrastado
         if(dragging.transform.childCount == 0) {
-
             // Se eu clicar com o botão esquerdo do mouse sobre um item ou pilha de itens
             if(eventData.button == PointerEventData.InputButton.Left) {
-
                 // Desative o raycast, para que possamos clicar sobre um slot
                 image.raycastTarget = false;
 
@@ -135,13 +132,10 @@ public class IItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, I
                 // Pegue o item ou pilha de itens completa
                 transform.SetParent(dragging.transform);
             }
-
             // Se eu clicar com o botão direito do mouse sobre um item ou pilha de itens
-            if(eventData.button == PointerEventData.InputButton.Right) {
-                
+            if(eventData.button == PointerEventData.InputButton.Right) {                
                 // Se a pilha de itens for menor ou igual a 1
                 if(stack <= 1) {
-
                     // Desative o raycast, para que possamos clicar sobre um slot
                     image.raycastTarget = false;
 
@@ -151,10 +145,8 @@ public class IItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, I
                     // Pegue o item
                     transform.SetParent(dragging.transform);
                 }   
-
                 // Se não
                 else {
-
                     // Crie um item para representar metade da pilha
                     GameObject itemObject = Instantiate(itemPrefab);
 
@@ -188,20 +180,16 @@ public class IItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, I
                 }
             }
         }
-
         // Se não, se tiver um item sendo arrastado
         else if(dragging.transform.childCount == 1) {
-
             // Procure nos objetos filho do GameObject "Dragging Item" o component (script) "IItem"
             IItem iItem3 = dragging.GetComponentInChildren<IItem>();
 
             // Se os itens em um slot não estiver no maximo que a pilha permite
             if(stack < item.maxStack) {
-
                 // Se eu clicar com o botão esquerdo sobre um item
                 if(eventData.button == PointerEventData.InputButton.Left) {
-                    if((stack + iItem3.stack) <= item.maxStack) {
-                        
+                    if((stack + iItem3.stack) <= item.maxStack) {                        
                         // Coloque o item ou pilha de itens completa no mesmo slot
                         stack += iItem3.stack;
 
@@ -213,14 +201,12 @@ public class IItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, I
 
                         // Se a pilha de itens que estiver sendo arrastada for menor que zero
                         if(iItem3.stack <= 0) {
-
                             // Destrua a pilha de itens que esta sendo arrastada
                             Destroy(iItem3.gameObject);
                         }
                         
                         // Se não
                         else {
-
                             // Atualize o texto do TextMeshPro da pilha que esta sendo arrastada
                             iItem3.RefreshCount();
                         }
@@ -228,10 +214,8 @@ public class IItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, I
                         // Se não houver espaço para colocar todos os itens da pilha que esta sendo arrastada na pilha que esta no slot, devera colocar o maximo de itens possivel, e continuar com o restando sendo arrastado
                     }
                 }
-
                 // Se eu clicar com o botão direito sobre um item
                 if(eventData.button == PointerEventData.InputButton.Right) {
-
                     // Acrecente um item a pilha de itens que esta no slot
                     stack++;
 
@@ -243,14 +227,11 @@ public class IItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, I
 
                     // Se a pilha de itens que estiver sendo arrastada for menor que zero
                     if(iItem3.stack <= 0) {
-
                         // Destrua a pilha de itens que esta sendo arrastada
                         Destroy(iItem3.gameObject);
                     }
-
                     // Se não
                     else {
-
                         // Atualize o texto do TextMeshPro da pilha que esta sendo arrastada
                         iItem3.RefreshCount();
                     }
@@ -269,7 +250,6 @@ public class IItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, I
 
             // Se tiver um item sendo arrastado
             if(dragging.transform.childCount > 0) {
-
                 // Esconda o Tooltip
                 Tooltip.Hide();
             }
@@ -281,7 +261,6 @@ public class IItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, I
 
         // Se eu fechar o menu
         if(!openMenu) {
-
             // Esconda o Tooltip
             Tooltip.Hide();
         }
@@ -289,14 +268,12 @@ public class IItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, I
     
     // Se eu colocar o cursor do mouse sobre um item
     public void OnPointerEnter(PointerEventData eventData) {
-
         // Exiba o Tooltip
         Tooltip.Show(header, content, id);
     }
 
     // Se eu retirar o cursor do mouse sobre um item
     public void OnPointerExit(PointerEventData eventData) {
-
         // Esconda o Tooltip
         Tooltip.Hide();
     }

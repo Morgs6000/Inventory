@@ -26,14 +26,11 @@ public class IDrag : MonoBehaviour {
 
         // Se tiver um item sendo arrastado
         if(transform.childCount == 1) {
-
             // Procure nos objetos filho deste GameObject o component (script) "IItem"
             item = GetComponentInChildren<IItem>();
 
-            // Mova o item para o slot de origem
-            RectTransform rectTransform = item.GetComponent<RectTransform>();
-
             // Corrigi um bug que quando você pega metade da pilha, o item diminui de tamanho
+            RectTransform rectTransform = item.GetComponent<RectTransform>();            
             rectTransform.localScale = transform.localScale;
             
             // Corrigi um bug onde a imagem do item não aparece
@@ -45,7 +42,6 @@ public class IDrag : MonoBehaviour {
             // Se eu clicar com o botão esquerdo do mouse, ou fechar o menu
             if(Input.GetMouseButtonDown(0) || !openMenu) {
                 if(!EventSystem.current.IsPointerOverGameObject()) {
-
                     // Reative o Raycast do item para que possamos clicar nele novamente
                     item.getImage.raycastTarget = true;
 

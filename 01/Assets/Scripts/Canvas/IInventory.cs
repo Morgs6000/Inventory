@@ -38,7 +38,6 @@ public class IInventory : MonoBehaviour {
 
                 return true;
             }
-
             // Encontre qualquer slot vazio
             else if(itemInSlot == null) {
                 SpawnNewItem(item, slot);
