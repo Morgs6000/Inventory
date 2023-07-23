@@ -87,7 +87,7 @@ public class ISlot : MonoBehaviour, IPointerDownHandler {
                     RectTransform rectTransform = item2.GetComponent<RectTransform>();
 
                     // Não to lembrada pra que serve, mas acho que era algum bug que quando você colocava o item no slot, o item diminuia de tamanho
-                    rectTransform.localScale = transform.localScale;
+                    //rectTransform.localScale = transform.localScale;
 
                     // Subtraia um item da pilha de itens que esta sendo arratado
                     item.getStack--;

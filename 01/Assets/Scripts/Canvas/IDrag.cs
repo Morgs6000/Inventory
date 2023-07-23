@@ -33,8 +33,11 @@ public class IDrag : MonoBehaviour {
             // Mova o item para o slot de origem
             RectTransform rectTransform = item.GetComponent<RectTransform>();
 
-            // Não to lembrada pra que serve, mas acho que era algum bug que quando você colocava o item no slot, o item diminuia de tamanho
+            // Corrigi um bug que quando você pega metade da pilha, o item diminui de tamanho
             rectTransform.localScale = transform.localScale;
+            
+            // Corrigi um bug onde a imagem do item não aparece
+            rectTransform.sizeDelta = new Vector2(16, 16);
 
             // Mova o item junto com o cursor do mouse
             item.transform.position = Input.mousePosition;
