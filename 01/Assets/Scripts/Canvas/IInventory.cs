@@ -23,12 +23,11 @@ public class IInventory : MonoBehaviour {
     }
 
     public bool AddItem(Item item) {
-        // Verifique se algum slot tem o mesmo item com contagem menor que o máximo
-        // Encontre qualquer slot vazio
         for(int i = 0; i < slots.Count; i++) {
             ISlot slot = slots[i];
             IItem itemInSlot = slot.GetComponentInChildren<IItem>();
 
+            // Verifique se algum slot tem o mesmo item com contagem menor que o máximo
             if(
                 itemInSlot != null &&
                 itemInSlot.getItem == item &&
@@ -39,6 +38,8 @@ public class IInventory : MonoBehaviour {
 
                 return true;
             }
+
+            // Encontre qualquer slot vazio
             else if(itemInSlot == null) {
                 SpawnNewItem(item, slot);
 

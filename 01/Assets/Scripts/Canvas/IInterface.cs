@@ -76,6 +76,8 @@ public class IInterface : MonoBehaviour {
 
             inventory.SetActive(!inventory.activeSelf);
         }
+
+        // Se eu pressionar "Escape" deve fechar o menu, mas sem abrir o "Game Menu"
     }
 
     public bool getOpenMenu {
