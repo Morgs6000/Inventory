@@ -24,6 +24,8 @@ public class IInterface : MonoBehaviour {
     private void Start() {  
         //gameMenu.SetActive(false);      
         inventory.SetActive(true);
+        
+        openMenu = true;
     }
 
     private void Update() {
