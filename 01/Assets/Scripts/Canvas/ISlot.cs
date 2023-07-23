@@ -46,7 +46,7 @@ public class ISlot : MonoBehaviour, IPointerDownHandler {
             // Se eu clicar com o botão direito sobre um slot
             if(eventData.button == PointerEventData.InputButton.Right) {
                 // ???
-                // Se tiver 2 itens ou mais sendo arrastados
+                // Se tiver menos de 2 itens sendo arrastados
                 if(item.getStack < 2) {
                     // Reative o Raycast do item para que possamos clicar nele novamente
                     item.getImage.raycastTarget = true;
@@ -57,7 +57,7 @@ public class ISlot : MonoBehaviour, IPointerDownHandler {
                     // Mova o item para o slot de origem
                     item.transform.SetParent(item.getParentAfterDrag);
                 }
-                // Se não, se só tiver 2 ou mais itens sendo arrastados
+                // Se não, se tiver 2 ou mais itens sendo arrastados
                 else {
                     // Crie um item para representar metade da pilha
                     GameObject itemObject = Instantiate(itemPrefab);
