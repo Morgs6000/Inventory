@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ToolbarSlot : MonoBehaviour {
     [SerializeField] private GameObject slot;
     private GameObject item;
+
+    private TextMeshProUGUI textMeshPro;
     
     private void Start() {
         
@@ -24,6 +27,8 @@ public class ToolbarSlot : MonoBehaviour {
                 // Corrigi um bug que quando você pega metade da pilha, o item diminui de tamanho
                 RectTransform rectTransform = item.GetComponent<RectTransform>();
                 rectTransform.localScale = transform.localScale;
+
+
             } 
         }
         if(transform.childCount > 0) {

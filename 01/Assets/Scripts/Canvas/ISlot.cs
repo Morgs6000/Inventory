@@ -83,6 +83,8 @@ public class ISlot : MonoBehaviour, IPointerDownHandler {
 
                     // Atualize o texto do TextMeshPro da pilha que esta sendo arrastada
                     item.RefreshCount();
+
+                    // Ta com um bugzinho quando eu coloco 1 unico item em varios slots seguidos
                 }
             }
         }

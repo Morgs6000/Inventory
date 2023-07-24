@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class NotEnoughItems : MonoBehaviour {
+public class JustEnoughItems : MonoBehaviour {
     private bool result;
     [SerializeField] private IInventory iInventory;
     [SerializeField] private Item[] itemsToPickup;
