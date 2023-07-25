@@ -24,15 +24,15 @@ public class ISlot : MonoBehaviour, IPointerDownHandler {
     }
 
     public void OnPointerDown(PointerEventData eventData) {
+        // Procure nos objetos filho do GameObject "Dragging Item" o component (script) "IItem"
+        item = dragging.GetComponentInChildren<IItem>();
+
         // Se tiver um item sendo arrastado
         if(dragging.transform.childCount == 1) {
             // Se eu clicar com o botão esquerdo sobre um slot
             if(eventData.button == PointerEventData.InputButton.Left) {
                 // Se o slot estiver vazio, coloque o item sendo arrastado no slot
                 if(transform.childCount == 0) {
-                    // Procure nos objetos filho do GameObject "Dragging Item" o component (script) "IItem"
-                    item = dragging.GetComponentInChildren<IItem>();
-
                     // Reative o Raycast do item para que possamos clicar nele novamente
                     item.getImage.raycastTarget = true;
 

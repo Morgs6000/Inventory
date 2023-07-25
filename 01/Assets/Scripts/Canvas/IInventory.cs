@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class IInventory : MonoBehaviour {
-    [SerializeField] private GameObject toolbar;
-    [SerializeField] private GameObject invetory;    
+    [SerializeField] private GameObject slotsToolbar;
+    [SerializeField] private GameObject slotsInvetory;    
     [SerializeField] private List<ISlot> slots = new List<ISlot>();
 
     [SerializeField] private GameObject itemPrefab;
 
     private void Awake() {
-        slots.AddRange(toolbar.GetComponentsInChildren<ISlot>());
-        slots.AddRange(invetory.GetComponentsInChildren<ISlot>());
+        slots.AddRange(slotsToolbar.GetComponentsInChildren<ISlot>());
+        slots.AddRange(slotsInvetory.GetComponentsInChildren<ISlot>());
     }
 
     private void Start() {

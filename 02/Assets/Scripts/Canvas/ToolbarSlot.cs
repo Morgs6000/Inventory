@@ -6,8 +6,6 @@ using TMPro;
 public class ToolbarSlot : MonoBehaviour {
     [SerializeField] private GameObject slot;
     private GameObject item;
-
-    private TextMeshProUGUI textMeshPro;
     
     private void Start() {
         
@@ -20,6 +18,7 @@ public class ToolbarSlot : MonoBehaviour {
     public void DuplicarItem() {
         if(transform.childCount < 1) {
             if(slot.transform.childCount > 0) {
+
                 item = Instantiate(slot.transform.GetChild(0).gameObject);
 
                 item.transform.SetParent(transform);
@@ -28,7 +27,11 @@ public class ToolbarSlot : MonoBehaviour {
                 RectTransform rectTransform = item.GetComponent<RectTransform>();
                 rectTransform.localScale = transform.localScale;
 
+                GameObject itemOrigem = slot.transform.GetChild(0).gameObject;
 
+                TextMeshProUGUI textMeshProOrigem = itemOrigem.GetComponentInChildren<TextMeshProUGUI>();
+
+                Debug.Log(textMeshProOrigem.text);
             } 
         }
         if(transform.childCount > 0) {

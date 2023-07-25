@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 
 public class Toolbar : MonoBehaviour {
-    [SerializeField] private GameObject slotGrid;
+    [SerializeField] private GameObject slotToolbar;
     [SerializeField] private ISlot[] slots;
     private ISlot slot;
     private IItem itemInSlot;
@@ -17,7 +17,7 @@ public class Toolbar : MonoBehaviour {
     private IInterface iInterface;
 
     private void Awake() {
-        slots = slotGrid.GetComponentsInChildren<ISlot>();
+        slots = slotToolbar.GetComponentsInChildren<ISlot>();
         
         iInterface = GameObject.Find("Interface Manager").GetComponent<IInterface>();
     }
