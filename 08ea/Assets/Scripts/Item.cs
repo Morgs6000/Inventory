@@ -4,24 +4,26 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Item : MonoBehaviour, IPointerDownHandler {    
+public class Item : MonoBehaviour, IPointerDownHandler {
+    private ItemScript itemScript;
+    
     public Transform parrentAfterDrag;
 
-    //public Image image;
-    public RawImage rawImage;
+    public Image image;
+    //public RawImage rawImage;
 
     //[SerializeField] private GameObject drag;
     private Drag drag;
 
-    private ItemsManager itemsManager;
+    //private ItemsManager itemsManager;
 
     private void Awake() {
-        //image = GetComponent<Image>();
-        rawImage = GetComponent<RawImage>();
+        image = GetComponent<Image>();
+        //rawImage = GetComponent<RawImage>();
 
         //drag = GameObject.Find("Drag");
         drag = FindObjectOfType<Drag>();
-        itemsManager = FindObjectOfType<ItemsManager>();
+        //itemsManager = FindObjectOfType<ItemsManager>();
     }
 
     public void OnPointerDown(PointerEventData eventData) {
@@ -47,8 +49,8 @@ public class Item : MonoBehaviour, IPointerDownHandler {
         // Jogar o item para o final da Hierarquia do Canvas
         transform.SetParent(drag.transform);
 
-        //image.raycastTarget = false;
-        rawImage.raycastTarget = false;
+        image.raycastTarget = false;
+        //rawImage.raycastTarget = false;
     }
 
     public void OnDragging() {
@@ -63,16 +65,16 @@ public class Item : MonoBehaviour, IPointerDownHandler {
         // Retonar o item para o ultimo slot salvo
         transform.SetParent(parrentAfterDrag);
 
-        //image.raycastTarget = true;
-        rawImage.raycastTarget = true;
+        image.raycastTarget = true;
+        //rawImage.raycastTarget = true;
     }
 
-    public void InitialiseItem(EnumItems itemID) {
-        //itemScript = newItem;
+    public void InitialiseItem(ItemScript newItem) {
+        itemScript = newItem;
 
-        //image.sprite = newItem.sprite;
+        image.sprite = newItem.sprite;
 
-        rawImage.texture = itemsManager.itemsAtlas;
-        rawImage.uvRect = itemsManager.uv(itemsManager.GetUV(itemID));
+        //rawImage.texture = itemsManager.itemsAtlas;
+        //rawImage.uvRect = itemsManager.uv(itemsManager.GetUV(itemID));
     }
 }

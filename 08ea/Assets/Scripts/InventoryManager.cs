@@ -14,12 +14,12 @@ public class InventoryManager : MonoBehaviour {
         slots.AddRange(invetory.GetComponentsInChildren<Slot>());
     }
 
-    public bool AddItem(EnumItems itemID) {
+    public bool AddItem(ItemScript itemScript) {
         foreach(Slot slot in slots) {
             Item item = slot.GetComponentInChildren<Item>();
 
             if(!item) {
-                SpawnNewItem(itemID, slot);
+                SpawnNewItem(itemScript, slot);
                 return true;
             }
         }
@@ -27,10 +27,10 @@ public class InventoryManager : MonoBehaviour {
         return false;
     }
 
-    private void SpawnNewItem(EnumItems itemID, Slot slot) {
+    private void SpawnNewItem(ItemScript itemScript, Slot slot) {
         GameObject newItem = Instantiate(itemPrefab, slot.transform);
 
         Item item = newItem.GetComponent<Item>();
-        item.InitialiseItem(itemID);
+        item.InitialiseItem(itemScript);
     }
 }
