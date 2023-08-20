@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using TMPro;
 
 public class IItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler {
-    private Item item;
+    [SerializeField] private Item item;
     
     private EnumVoxels voxelID;
     //private EnumItems itemID;
